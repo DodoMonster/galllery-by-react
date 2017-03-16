@@ -1,0 +1,141 @@
+/* Base Application Styles */
+@font-face{
+    font-family: "icons-turn-arrow",;
+    src: url('../fonts/icons/turn-arrow.eot') format('enbedded'), url('../fonts/icons/turn-arrow.woff') format('woff'), url('../fonts/icons/turn-arrow.ttf') format('truetype'), url('../fonts/icons/turn-arrow.svg') format('svg');
+}
+html,body {
+  width: 100%;
+  height: 100%;
+
+  background-color: #222;  
+}
+.content{
+  width:100%;
+  height: 100%;
+}
+
+/** start stage style **/
+.stage{
+  position: relative;
+
+  width: 100%;
+  height: 680px;
+}
+/** end stage style **/
+
+
+/** start stage style **/
+.img-sec{
+    position: relative;
+    height: 100%;
+    width:100%;
+    overflow: hidden;
+    background-color: #ddd;
+    perspective:1800px;
+}
+
+@at-root{
+    .img-figure{
+        position: absolute;        
+        width: 320px;
+        height: 360px;
+        margin:0;
+        padding: 40px;        
+        box-sizing:border-box;
+        background-color: #fff;
+        cursor: pointer;
+        transform-origin: 0 50% 0;
+        /* 被转换元素的位置 3D的分别对应: x轴，y轴，z轴，默认是：50% 50% 0 */
+        transform-style: preserve-3d;
+        /* 子元素将保留其3D位置 */
+        transition: transform .6s ease-in-out, left .6s ease-in-out, top .6s ease-in-out;
+        /* transform、left、top分别应用过渡效果，.6秒完成，慢速开始和结束 */
+    }
+     .is-inverse{
+       transform: translate(320px) rotateY(180deg);
+    }
+    figcaption{
+        text-align: center;
+        .img-title{
+            margin:20px 0 0 0;
+            color:#a7a0a2;
+            font-size: 16px;
+        }
+        .img-back {
+          position: absolute;
+          /* 相对于img-sec进行定位 */
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          box-sizing: border-box;
+          padding: 50px 40px;
+          overflow: auto;
+          color: #666;
+          background: #fff;
+          transform: rotateY(180deg) translateZ(1px); // translazeZ(1px) 解决safari浏览器图片翻转显示有问题
+        }
+    }
+    
+    img{
+        width:240px;
+        height:240px;
+    }
+
+}
+/** end stage style **/
+
+/** start stage style **/
+.controller-nav{
+  position: absolute;
+  left: 0;
+  bottom: 30px;
+  z-index: 2;
+  width: 100%;
+  text-align: center;
+  @at-root{
+    .controller-unit{
+        display: inline-block;
+        width:30px;
+        height: 30px;
+        margin:0 5px;
+        text-align: center;
+        cursor: pointer;
+        background-color: #aaa;
+        border-radius: 50%;
+        transform:scale(.5);
+        vertical-align: middle;
+        transform:scale(.5);
+        transition:transform .6s ease-in-out,background-color .3s;
+        &.is-center{
+            transform:scale(1);
+            background-color: #888;
+            
+            &::after{
+                font-family: "icons-turn-arrow";
+                content: '\e600';
+                color:#fff;
+                line-height: 30px;
+                -webkit-font-smoothing:anitialiased;
+                -moz-osx-font-smoothing:grayscale;               
+            }
+            &.is-inverse{
+                transform:rotateY(180deg);
+                background-color: #555;
+                // &::after{
+                //     font-family: "icons-turn-arrow";
+                //     content: '\e600';
+                //     color:#fff;
+                //     line-height: 30px;
+                //     -webkit-font-smoothing:anitialiased;
+                //     -moz-osx-font-smoothing:grayscale;
+                // }
+            }
+        }
+        
+    }    
+  }
+}
+/** end stage style **/
+
+
